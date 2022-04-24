@@ -23,7 +23,7 @@ export class ShoppingEditComponent{
     const ingredientName = this.nameInput.nativeElement.value;
     const ingredientAmount = this.amountInput.nativeElement.value;
     if (ingredientName && ingredientAmount) {
-      this.shoppingListService.addIngredients(new Ingredient(ingredientName,ingredientAmount))
+      this.shoppingListService.addIngredient(new Ingredient(ingredientName,ingredientAmount))
     }else {
       window.alert('빈칸을 다 채워주세요.')
     }
