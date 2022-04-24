@@ -8,12 +8,19 @@ import {Recipe} from './recipes.model';
 })
 export class RecipesComponent implements OnInit {
   recipes:Recipe[] = [
-    new Recipe('a test recipe','this is simply a test','https://learnenglishteens.britishcouncil.org/sites/teens/files/a_recipe_1.jpg')
+    new Recipe('a test recipe','this is simply a test','https://learnenglishteens.britishcouncil.org/sites/teens/files/a_recipe_1.jpg'),
+    new Recipe('recipe','this is simply a test','https://learnenglishteens.britishcouncil.org/sites/teens/files/a_recipe_1.jpg'),
   ];
+  selectedRecipe:Recipe;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
+  }
+
+  onOpenRecipe(target:Recipe) {
+    this.selectedRecipe = target;
   }
 
 }
