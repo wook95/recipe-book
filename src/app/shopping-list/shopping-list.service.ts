@@ -8,19 +8,34 @@ export class ShoppingListService {
     new Ingredient('Apples', 5),
     new Ingredient('Tomatos', 5),
   ];
-  public changedIngredients = new Subject<Ingredient[]>();
+  public changedIngredientsSub = new Subject<Ingredient[]>();
+  public editingIngredientIndexSub = new Subject<number>();
 
   getIngredients() {
     return [...this.ingredients];
   }
 
+  getIngredient(index: number) {
+    return this.ingredients[index];
+  }
+
   addIngredient(ingredient: Ingredient) {
     this.ingredients.push(ingredient);
-    this.changedIngredients.next([...this.ingredients]);
+    this.changedIngredientsSub.next([...this.ingredients]);
   }
 
   addIngredients(ingredients: Ingredient[]) {
     this.ingredients.push(...ingredients);
-    this.changedIngredients.next([...this.ingredients]);
+    this.changedIngredientsSub.next([...this.ingredients]);
+  }
+
+  updateIngredient(index: number, newIngredient: Ingredient) {
+    this.ingredients[index] = newIngredient;
+    this.changedIngredientsSub.next([...this.ingredients]);
+  }
+
+  deleteIngredient(index: number) {
+    this.ingredients.splice(index, 1);
+    this.changedIngredientsSub.next([...this.ingredients]);
   }
 }
