@@ -28,10 +28,11 @@ export class ShoppingEditComponent implements OnInit {
       this.editedItemIndex = index;
       this.isEditMode = true;
       this.editedItem = this.shoppingListService.getIngredient(index);
-      this.ingredientForm.setValue({
+      this.ingredientForm.form.patchValue({
         name: this.editedItem.name,
         amount: this.editedItem.amount,
       });
+
     });
   }
 

@@ -37,15 +37,17 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   onAddShoppingList() {
-    // this.recipe.ingredients.forEach((ingredient) => {
-    //   this.shoppingListService.addIngredient(ingredient);
-    // })
     this.recipeService.addIngredientToList(this.recipe.ingredients);
 
   }
 
   onEditRecipe() {
     this.router.navigate(['edit'], { relativeTo: this.route });
+  }
+
+  onDeleteRecipe() {
+    this.recipeService.deleteRecipe(this.paramsId);
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
 
 }
